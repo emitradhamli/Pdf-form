@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My PDF Form Filler</title>
+</head>
+<body>
+
+<h2>Upload PDF Form</h2>
+<input type="file" id="pdfUpload" accept="application/pdf">
+
+<br><br>
+
+<textarea id="textInput" placeholder="Enter text to fill"></textarea>
+
+<br><br>
+
+<button onclick="downloadText()">Download Filled Text</button>
+
+<script>
+function downloadText() {
+    var text = document.getElementById("textInput").value;
+    var blob = new Blob([text], { type: "text/plain" });
+    var link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "filled_form.txt";
+    link.click();
+}
+</script>
+
+</body>
+</html>
